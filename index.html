@@ -3,51 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>남양홍씨 가계도</title>
+    <title>남양홍씨 가계도 (모바일 전용)</title>
     <style>
-        /* 기본 스타일 */
+        /* 기본 스타일 및 변수 설정 */
+        :root {
+            --border-color: #ccc;
+            --person-bg: #ffffff;
+            --deceased-bg: #f8f8f8;
+            --deceased-border: #999;
+            --spouse-color: #00695c;
+            --male-name-color: #0056b3;
+            --female-name-color: #c83349;
+            --text-color: #333;
+            --bg-color: #f4f4f9;
+        }
+
         body {
             font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
-            padding: 20px;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         .container {
-            max-width: 1600px;
+            width: 100%;
             margin: 0 auto;
-            background: #fff;
-            padding: 30px;
+            background: var(--person-bg);
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            overflow-x: auto; /* 가로 스크롤 추가 */
         }
 
         h1 {
             text-align: center;
             color: #2c3e50;
             margin-bottom: 30px;
+            font-size: 1.8em;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
         }
 
-        /* 족보 트리 스타일 */
-        .family-tree {
+        /* 모바일 전용 족보 트리 스타일 */
+        .family-tree, .family-tree ul {
             padding-left: 0;
             list-style-type: none;
             position: relative;
         }
-
+        
         .family-tree ul {
-            padding-left: 40px;
-            position: relative;
-            border-left: 2px solid #ccc;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
         }
 
         .family-tree li {
             list-style-type: none;
-            margin: 20px 0;
+            margin: 15px 0;
             position: relative;
         }
 
@@ -55,63 +68,57 @@
         .family-tree li::before {
             content: '';
             position: absolute;
-            top: 1.2em; /* 카드 중앙에 맞추기 */
-            left: -40px;
-            width: 40px;
+            top: 1.5em; /* 카드 중앙 부근에 맞춤 */
+            left: -20px;
+            width: 20px;
             height: 2px;
-            background-color: #ccc;
+            background-color: var(--border-color);
         }
         
+        /* 최상위 요소의 세로선 제거 */
         .family-tree > li > ul {
-             border-left: none; /* 최상위 부모에서는 수직선 제거 */
+             border-left: none;
         }
-        .family-tree > li > ul > li:first-child{
-             margin-top: 30px;
-        }
-
-        /* 인물 카드 */
+        
+        /* 인물 카드 스타일 */
         .person {
-            display: inline-block;
+            display: block;
             padding: 12px 18px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: #ffffff;
-            min-width: 300px;
+            background-color: var(--person-bg);
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .person:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-color: #007bff;
+            width: 100%;
+            box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
         }
 
         .person .name {
             font-weight: bold;
             font-size: 1.1em;
-            color: #0056b3;
+            color: var(--male-name-color);
         }
         
         .person.female .name {
-            color: #c83349;
+            color: var(--female-name-color);
         }
 
         .person .details {
             font-size: 0.9em;
             color: #555;
-            margin-top: 5px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
         }
 
         .details span {
             display: block;
-            margin-top: 3px;
+            margin-top: 4px;
         }
         
         /* 사망자 스타일 */
         .deceased {
-            border: 1px solid #999;
-            background-color: #f8f8f8;
+            border-color: var(--deceased-border);
+            background-color: var(--deceased-bg);
         }
 
         .deceased .name {
@@ -119,7 +126,7 @@
         }
 
         .spouse {
-            color: #00695c; /* 배우자 정보 색상 */
+            color: var(--spouse-color);
         }
     </style>
 </head>
@@ -168,13 +175,13 @@
                                                                 <li><div class="person female"><span class="name">35세 명은 (여)</span><div class="details"><span>생: 1987.01.12, 서울과기대 졸</span></div></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 상표</span><div class="details"><span>생: 1956.05.06 ~ 졸: 1992.03.19</span><span>인하공대 졸</span><span>묘: 연기 안송적골 106 / 33세 순태 가족묘원</span><span class="spouse">배: 온양 정정진 (생: 1958.11.21)</span></div></div>
+                                                        <li><div class="person deceased"><span class="name">34세 상표</span><div class="details"><span>생: 1956.05.06 ~ 졸: 1992.03.19</span><span>인하공대 졸</span><span class="spouse">배: 온양 정정진 (생: 1958.11.21)</span><span>묘: 연기 안송적골 106 / 33세 순태 가족묘원</span></div></div>
                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 성연</span><div class="details"><span>생: 1989.03.15, 동서울대 졸</span></div></div></li>
                                                                 <li><div class="person female"><span class="name">35세 은지(희진) (여)</span><div class="details"><span>생: 1985.01.21, 부산교육대학교 졸</span></div></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person female"><span class="name">34세 순표 (여)</span><div class="details"><span>생: 1947.02.23</span><span class="spouse">부: 청주 한상만 (사망)</span></div></div>
+                                                        <li><div class="person female deceased"><span class="name">34세 순표 (여)</span><div class="details"><span>생: 1947.02.23</span><span class="spouse">부: 청주 한상만 (사망)</span></div></div>
                                                             <ul>
                                                                 <li><div class="person female"><span class="name">35세 한정희 (여)</span></div></li>
                                                                 <li><div class="person female"><span class="name">35세 한윤희 (여)</span></div></li>
@@ -182,7 +189,7 @@
                                                                 <li><div class="person"><span class="name">35세 한동희</span></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person female"><span class="name">34세 선표 (여)</span><div class="details"><span>생: 1960.</span><span class="spouse">부: 경주 김정환 (사망)</span></div></div>
+                                                        <li><div class="person female deceased"><span class="name">34세 선표 (여)</span><div class="details"><span>생: 1960.</span><span class="spouse">부: 경주 김정환 (사망)</span></div></div>
                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 김태영</span></div></li>
                                                                 <li><div class="person female"><span class="name">35세 김지연 (여)</span></div></li>
@@ -264,9 +271,9 @@
                                                     </ul>
                                                 </li>
                                                 <li><div class="person deceased"><span class="name">33세 순의</span><div class="details"><span>6.25때 행방불명</span></div></div></li>
-                                                <li><div class="person"><span class="name">33세 순중</span><div class="details"><span>생: 1936.03.22 ~ 졸: 1974.12.25</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span><span class="spouse">배: 전주 이건숙 (생: 1931.09.29)</span></div></div>
+                                                <li><div class="person deceased"><span class="name">33세 순중</span><div class="details"><span>생: 1936.03.22 ~ 졸: 1974.12.25</span><span class="spouse">배: 전주 이건숙 (생: 1931.09.29)</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span></div></div>
                                                     <ul>
-                                                        <li><div class="person"><span class="name">34세 표</span><div class="details"><span>생: 1957.03.20</span><span class="spouse">배: 전주 이명규 (생: 1958.06.20, 사망)</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span></div></div>
+                                                        <li><div class="person deceased"><span class="name">34세 표</span><div class="details"><span>생: 1957.03.20</span><span class="spouse">배: 전주 이명규 (생: 1958.06.20, 사망)</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span></div></div>
                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 홍진</span><div class="details"><span>생: 1984.06.10</span><span class="spouse">배: 김해 김초롱 (생: 1987.01.04)</span></div></div>
                                                                     <ul>
@@ -317,7 +324,7 @@
                                                         <li><div class="person female"><span class="name">34세 은주 (여)</span><div class="details"><span>생: 1977.10.06, 인하대 졸</span></div></div></li>
                                                     </ul>
                                                 </li>
-                                                <li><div class="person female"><span class="name">33세 옥순 (여)</span><div class="details"><span class="spouse">부: 전주 이무성 (사망)</span></div></div>
+                                                <li><div class="person female deceased"><span class="name">33세 옥순 (여)</span><div class="details"><span class="spouse">부: 전주 이무성 (사망)</span></div></div>
                                                     <ul>
                                                         <li><div class="person"><span class="name">34세 이은관</span><div class="details"><span>연세대 졸</span></div></div></li>
                                                         <li><div class="person"><span class="name">34세 이은호</span><div class="details"><span>충남대 졸</span></div></div></li>
