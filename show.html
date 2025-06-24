@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 슬라이드 쇼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Noto Sans KR 폰트 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* 슬라이드쇼 이미지 스타일 */
+        #slideshow-image {
+            /* 전환 효과: 투명도(opacity)가 0.5초 동안 부드럽게 변경됩니다. */
+            transition: opacity 0.5s ease-in-out;
+            max-width: 90vw;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-4xl mx-auto text-center">
+        <h3 class="text-1xl md:text-1xl font-bold mb-1 text-gray-100">사진 슬라이드 쇼</h3>
+        
+        <!-- 안내 및 오류 메시지를 표시하는 영역 -->
+        <div id="message-container" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <p id="message-text" class="text-lg text-gray-300">
+                URL에 '?id=폴더명'을 추가하여 이미지 폴더를 지정해주세요. <br>
+                예: <code>show.html?id=my_photos</code>
+            </p>
+        </div>
+
+        <!-- 슬라이드쇼 이미지가 표시될 컨테이너 -->
+        <div id="slideshow-container" class="hidden w-full h-auto mt-6 flex items-center justify-center bg-black rounded-lg shadow-2xl overflow-hidden aspect-w-16 aspect-h-9">
+            <img id="slideshow-image" src="" alt="슬라이드 쇼 이미지" class="rounded-lg">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 설정 변수 ---
+            const IMAGE_DISPLAY_TIME = 3000; // 각 이미지 표시 시간 (3초)
+            const FADE_TRANSITION_SPEED = 500; // 페이드 전환 속도 (0.5초)
+
+            // --- DOM 요소 ---
+            const messageContainer = document.getElementById('message-container');
+            const messageText = document.getElementById('message-text');
+            const slideshowContainer = document.getElementById('slideshow-container');
+            const slideshowImage = document.getElementById('slideshow-image');
+
+            // --- 상태 변수 ---
+            const imagePaths = []; // 발견된 이미지 경로 목록
+            let currentImageIndex = 0; // 현재 이미지 인덱스
+            let slideshowInterval; // 슬라이드쇼 인터벌 ID
+
+            /**
+             * URL에서 'id' 쿼리 파라미터를 가져옵니다.
+             * 이 id는 이미지들이 있는 하위 폴더의 이름입니다.
+             */
+            const urlParams = new URLSearchParams(window.location.search);
+            const folderId = urlParams.get('id');
+
+            if (!folderId) {
+                // 'id'가 URL에 없으면 안내 메시지를 표시하고 실행을 중지합니다.
+                messageContainer.classList.remove('hidden');
+                slideshowContainer.classList.add('hidden');
+            } else {
+                // 'id'가 있으면 이미지 찾기를 시작합니다.
+                findImagesInFolder();
+            }
+
+            /**
+             * 지정된 폴더에서 이미지를 순차적으로 찾습니다.
+             * 브라우저 보안 정책상 서버의 파일 목록을 직접 읽을 수 없으므로,
+             * 1.jpg, 2.jpg, 3.png 등 숫자 이름의 파일을 순서대로 로드해보고
+             * 로드에 실패하면(404 Not Found) 더 이상 파일이 없다고 판단합니다.
+             */
+            function findImagesInFolder() {
+                let imageCounter = 1;
+                const supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                let currentExtIndex = 0;
+
+                messageText.textContent = `'${folderId}' 폴더에서 이미지를 찾는 중...`;
+                
+                function tryLoadNext() {
+                    if (currentExtIndex >= supportedExtensions.length) {
+                        // 현재 숫자에 대해 모든 확장자를 시도했으면 다음 숫자로 넘어감
+                        imageCounter++;
+                        currentExtIndex = 0;
+                    }
+                    
+                    const extension = supportedExtensions[currentExtIndex];
+                    const path = `${folderId}/${imageCounter}.${extension}`;
+                    
+                    const img = new Image();
+                    img.src = path;
+
+                    img.onload = () => {
+                        // 이미지 로드 성공
+                        imagePaths.push(path);
+                        // 다음 이미지를 찾기 위해 카운터를 증가시키고 다시 시도
+                        imageCounter++;
+                        currentExtIndex = 0;
+                        tryLoadNext();
+                    };
+
+                    img.onerror = () => {
+                        // 이미지 로드 실패
+                        currentExtIndex++;
+                        if (currentExtIndex < supportedExtensions.length) {
+                           // 같은 숫자에 대해 다른 확장자로 다시 시도
+                           tryLoadNext();
+                        } else {
+                            // 모든 확장자를 시도해도 실패하면, 더 이상 파일이 없는 것으로 간주
+                            if (imagePaths.length > 0) {
+                                // 찾은 이미지가 있으면 슬라이드쇼 시작
+                                startSlideshow();
+                            } else {
+                                // 이미지를 하나도 찾지 못했으면 오류 메시지 표시
+                                messageText.textContent = `'${folderId}' 폴더에서 이미지를 찾을 수 없거나 폴더가 존재하지 않습니다. 폴더 이름과 이미지 파일(예: 1.jpg, 2.png)이 올바른지 확인해주세요.`;
+                            }
+                        }
+                    };
+                }
+
+                tryLoadNext();
+            }
+
+            /**
+             * 슬라이드쇼를 초기화하고 시작합니다.
+             */
+            function startSlideshow() {
+                // 메시지 컨테이너를 숨기고 슬라이드쇼 컨테이너를 표시합니다.
+                messageContainer.classList.add('hidden');
+                slideshowContainer.classList.remove('hidden');
+
+                // 첫 번째 이미지를 로드하고 표시합니다.
+                slideshowImage.src = imagePaths[currentImageIndex];
+                slideshowImage.style.opacity = 1;
+
+                // 설정된 시간 간격으로 다음 이미지를 보여주는 인터벌을 시작합니다.
+                slideshowInterval = setInterval(showNextImage, IMAGE_DISPLAY_TIME);
+            }
+
+            /**
+             * 다음 이미지를 페이드 효과와 함께 표시합니다.
+             */
+            function showNextImage() {
+                // 현재 이미지를 서서히 투명하게 만듭니다(페이드 아웃).
+                slideshowImage.style.opacity = 0;
+
+                // 페이드 아웃 전환이 끝나는 시점에 맞춰 다음 작업을 수행합니다.
+                setTimeout(() => {
+                    // 다음 이미지 인덱스를 계산합니다. 마지막 이미지면 처음으로 돌아갑니다.
+                    currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
+                    
+                    // img 요소의 소스를 다음 이미지 경로로 변경합니다.
+                    slideshowImage.src = imagePaths[currentImageIndex];
+                    
+                    // 새 이미지가 로드된 후, 서서히 나타나게 합니다(페이드 인).
+                    // onload 이벤트를 사용하여 이미지 로드가 완료된 후 페이드 인을 시작해야 끊김이 없습니다.
+                    slideshowImage.onload = () => {
+                         slideshowImage.style.opacity = 1;
+                    }
+                   
+                }, FADE_TRANSITION_SPEED);
+            }
+        });
+    </script>
+</body>
+</html>
