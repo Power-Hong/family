@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>남양홍씨 족보</title>
+    <title>남양홍씨 가계도</title>
     <style>
         /* 기본 스타일 */
         body {
@@ -69,7 +69,6 @@
              margin-top: 30px;
         }
 
-
         /* 인물 카드 */
         .person {
             display: inline-block;
@@ -77,14 +76,14 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #ffffff;
-            min-width: 250px;
+            min-width: 300px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .person:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border-color: #007bff;
         }
 
@@ -94,7 +93,7 @@
             color: #0056b3;
         }
         
-        .person .female .name {
+        .person.female .name {
             color: #c83349;
         }
 
@@ -108,10 +107,11 @@
             display: block;
             margin-top: 3px;
         }
-
+        
+        /* 사망자 스타일 */
         .deceased {
-            /* 사망자 스타일 */
-            border: 2px solid #a0a0a0;
+            border: 1px solid #999;
+            background-color: #f8f8f8;
         }
 
         .deceased .name {
@@ -126,25 +126,55 @@
 <body>
 
     <div class="container">
-        <h1>남양홍씨 족보 (南陽洪氏 族譜)</h1>
+        <h1>남양홍씨 가계도</h1>
 
         <ul class="family-tree">
-            <!-- 26세 ~ 32세 직계 -->
-            <li><div class="person"><span class="name">26세 상문 (尙文)</span><div class="details"><span class="spouse">배: 강화 최씨, 강능 김씨</span><span>묘: 연기 안송적골 106</span></div></div>
-                <ul><li><div class="person"><span class="name">27세 오렬 (五烈)</span><div class="details"><span class="spouse">배: 기계 유씨</span><span>묘: 연기 안송적골 106</span></div></div>
-                    <ul><li><div class="person"><span class="name">28세 경후 (景厚)</span><div class="details"><span class="spouse">배: 초계 변씨</span><span>묘: 연기 안송적골 106</span></div></div>
-                        <ul><li><div class="person"><span class="name">29세 병서 (秉瑞)</span><div class="details"><span class="spouse">배: 구례 장씨</span><span>묘: 연기 안송적골 106</span></div></div>
-                            <ul><li><div class="person"><span class="name">30세 과섭 (寡燮)</span><div class="details"><span class="spouse">배: 창원 황씨</span><span>묘: 연기 안송적골 106</span></div></div>
-                                <ul><li><div class="person"><span class="name">31세 재국 (載國)</span><div class="details"><span class="spouse">배: 부안 임씨, 전주 이씨</span><span>묘: 연기 안송적골 106</span></div></div>
+            <li><div class="person deceased"><span class="name">26세 상문</span><div class="details"><span class="spouse">배: 강화 최씨, 강능 김씨</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
+                <ul><li><div class="person deceased"><span class="name">27세 오렬</span><div class="details"><span class="spouse">배: 기계 유씨</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
+                    <ul><li><div class="person deceased"><span class="name">28세 경후</span><div class="details"><span class="spouse">배: 초계 변씨</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
+                        <ul><li><div class="person deceased"><span class="name">29세 병서</span><div class="details"><span class="spouse">배: 구례 장씨</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
+                            <ul><li><div class="person deceased"><span class="name">30세 과섭</span><div class="details"><span class="spouse">배: 창원 황씨</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
+                                <ul><li><div class="person deceased"><span class="name">31세 재국</span><div class="details"><span class="spouse">배: 부안 임씨, 전주 이씨</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
                                     <ul>
-                                        <!-- 32세 -->
-                                        <li><div class="person deceased"><span class="name">32세 중오 (重五, 종묵)</span><div class="details"><span>졸: 1989.01.19 (사망)</span><span class="spouse">배: 김해 김수봉 (졸: 1989.12.03)</span><span>묘: 연기 안송적골 106</span></div></div>
+                                        <li><div class="person deceased"><span class="name">32세 중오 (종묵)</span><div class="details"><span>생: 1902.11.13 ~ 졸: 1989.01.12</span><span class="spouse">배: 김해 김수봉 (생: 1902.12.23, 졸: 1989.12.03)</span><span>묘: 연기 안송적골 106 / 남양홍씨 26~32세 지묘</span></div></div>
                                             <ul>
-                                                <!-- 33세 -->
-                                                <li><div class="person deceased"><span class="name">33세 순태 (純兌, 순명)</span><div class="details"><span>생: 1922.04.22 ~ 졸: 1997.09.24</span><span class="spouse">배: 보성 오영임 (1921.06.24 ~ 1997.07.01)</span><span>묘: 연기 안송적골 106 / 33세 순태 가족묘원</span></div></div>
+                                                <li><div class="person deceased"><span class="name">33세 순태 (순명)</span><div class="details"><span>생: 1922.04.22 ~ 졸: 1997.09.24</span><span class="spouse">배: 보성 오영임 (생: 1921.06.24, 졸: 1997.07.01)</span><span>묘: 연기 안송적골 106 / 33세 순태 가족묘원</span></div></div>
                                                     <ul>
-                                                        <!-- 34세 of 순태 -->
-                                                        <li><div class="person female"><span class="name">34세 순표 (純杓) (여)</span><div class="details"><span>생: 1947.02.23</span><span class="spouse">부: 청주 한상만 (사망)</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 경표</span><div class="details"><span>생: 1951.06.10</span><span class="spouse">배: 풍천 임기년 (생: 1950.03.06)</span></div></div>
+                                                            <ul>
+                                                                <li><div class="person"><span class="name">35세 상영</span><div class="details"><span>생: 1972.07.10, 충남대 졸</span><span class="spouse">배: 청주 한상혜 (생: 1964.05.20)</span></div></div>
+                                                                    <ul>
+                                                                        <li><div class="person"><span class="name">36세 의현</span><div class="details"><span>생: 1999.01.18, 수원과학대 졸</span></div></div></li>
+                                                                        <li><div class="person"><span class="name">36세 의진</span><div class="details"><span>생: 2000.06.12, 국립경국대 졸</span></div></div></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li><div class="person"><span class="name">35세 지상</span><div class="details"><span>생: 1977.10.18, 대전우송대 졸</span><span class="spouse">배: 한양 조세희 (생: 1977.01.15)</span></div></div>
+                                                                    <ul>
+                                                                        <li><div class="person female"><span class="name">36세 혜린 (여)</span><div class="details"><span>생: 2003.01.17, 건국대 졸</span></div></div></li>
+                                                                        <li><div class="person female"><span class="name">36세 연서 (여)</span><div class="details"><span>생: 2009.05.07</span></div></div></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li><div class="person female"><span class="name">35세 민경 (여)</span><div class="details"><span>생: 1976.01.11, 충남대 졸</span><span class="spouse">부: 밀양 박지훈 (생: 1971.09.23, 충남대 졸)</span></div></div>
+                                                                    <ul>
+                                                                        <li><div class="person"><span class="name">36세 박상현</span><div class="details"><span>생: 2003.04.25, 한국기술교육기술대 졸</span></div></div></li>
+                                                                        <li><div class="person"><span class="name">36세 박상용</span><div class="details"><span>생: 2005.01.11, 건국대 졸</span></div></div></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><div class="person"><span class="name">34세 강표</span><div class="details"><span>생: 1954.12.15, 공주교육대/동국대 졸</span><span class="spouse">배: 선영 옥미자 (생: 1957.04.17)</span></div></div>
+                                                            <ul>
+                                                                <li><div class="person female"><span class="name">35세 명지 (여)</span><div class="details"><span>생: 1981.10.16, 신한대 졸</span></div></div></li>
+                                                                <li><div class="person female"><span class="name">35세 명은 (여)</span><div class="details"><span>생: 1987.01.12, 서울과기대 졸</span></div></div></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><div class="person"><span class="name">34세 상표</span><div class="details"><span>생: 1956.05.06 ~ 졸: 1992.03.19</span><span>인하공대 졸</span><span>묘: 연기 안송적골 106 / 33세 순태 가족묘원</span><span class="spouse">배: 온양 정정진 (생: 1958.11.21)</span></div></div>
+                                                            <ul>
+                                                                <li><div class="person"><span class="name">35세 성연</span><div class="details"><span>생: 1989.03.15, 동서울대 졸</span></div></div></li>
+                                                                <li><div class="person female"><span class="name">35세 은지(희진) (여)</span><div class="details"><span>생: 1985.01.21, 부산교육대학교 졸</span></div></div></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><div class="person female"><span class="name">34세 순표 (여)</span><div class="details"><span>생: 1947.02.23</span><span class="spouse">부: 청주 한상만 (사망)</span></div></div>
                                                             <ul>
                                                                 <li><div class="person female"><span class="name">35세 한정희 (여)</span></div></li>
                                                                 <li><div class="person female"><span class="name">35세 한윤희 (여)</span></div></li>
@@ -152,41 +182,7 @@
                                                                 <li><div class="person"><span class="name">35세 한동희</span></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 경표 (慶杓)</span><div class="details"><span>생: 1951.06.10</span><span class="spouse">배: 풍천 임기년 (생: 1950.03.06)</span></div></div>
-                                                            <ul>
-                                                                <li><div class="person female"><span class="name">35세 민경 (珉慶) (여)</span><div class="details"><span>생: 1976.01.11, 충남대 졸</span><span class="spouse">부: 밀양 박지훈 (생: 1971.09.23, 충남대 졸)</span></div></div>
-                                                                    <ul>
-                                                                        <li><div class="person"><span class="name">36세 박상현</span><div class="details"><span>생: 2003.04.25, 한국기술교육대 졸</span></div></div></li>
-                                                                        <li><div class="person"><span class="name">36세 박상용</span><div class="details"><span>생: 2005.01.11, 건국대 졸</span></div></div></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li><div class="person"><span class="name">35세 상영 (相榮)</span><div class="details"><span>생: 1972.07.10, 충남대 졸</span><span class="spouse">배: 청주 한상혜 (생: 1964.05.20)</span></div></div>
-                                                                    <ul>
-                                                                        <li><div class="person"><span class="name">36세 의현 (義賢)</span><div class="details"><span>생: 1999.01.18, 수원과학대 졸</span></div></div></li>
-                                                                        <li><div class="person"><span class="name">36세 의진 (義眞)</span><div class="details"><span>생: 2000.06.12, 국립경국대 졸</span></div></div></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li><div class="person"><span class="name">35세 지상 (志相)</span><div class="details"><span>생: 1977.10.18, 대전우송대 졸</span><span class="spouse">배: 한양 조세희 (생: 1977.01.15)</span></div></div>
-                                                                    <ul>
-                                                                        <li><div class="person female"><span class="name">36세 혜린 (惠麟) (여)</span><div class="details"><span>생: 2003.01.17, 건국대 졸</span></div></div></li>
-                                                                        <li><div class="person female"><span class="name">36세 연서 (然曙) (여)</span><div class="details"><span>생: 2009.05.07</span></div></div></li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><div class="person"><span class="name">34세 강표 (康杓)</span><div class="details"><span>생: 1954.12.15, 공주교대/동국대 졸</span><span class="spouse">배: 선영 옥미자 (생: 1957.04.17)</span></div></div>
-                                                            <ul>
-                                                                <li><div class="person female"><span class="name">35세 명지 (明智) (여)</span><div class="details"><span>생: 1981.10.16, 신한대 졸</span></div></div></li>
-                                                                <li><div class="person female"><span class="name">35세 명은 (明恩) (여)</span><div class="details"><span>생: 1987.01.12, 서울과기대 졸</span></div></div></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><div class="person deceased"><span class="name">34세 상표 (相杓)</span><div class="details"><span>인하공대 졸, 졸: 1992.03.19 (사망)</span><span class="spouse">배: 온양 정정진 (생: 1958.11.21)</span><span>묘: 연기 안송적골 106 / 33세 순태 가족묘원</span></div></div>
-                                                            <ul>
-                                                                <li><div class="person female"><span class="name">35세 은지 (恩智) (여)</span><div class="details"><span>생: 1985.01.21, 부산교대 졸</span></div></div></li>
-                                                                <li><div class="person"><span class="name">35세 성연 (星然)</span><div class="details"><span>생: 1989.03.15, 동서울대 졸</span></div></div></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><div class="person female"><span class="name">34세 선표 (善杓) (여)</span><div class="details"><span>생: 1960.</span><span class="spouse">부: 경주 김정환 (사망)</span></div></div>
+                                                        <li><div class="person female"><span class="name">34세 선표 (여)</span><div class="details"><span>생: 1960.</span><span class="spouse">부: 경주 김정환 (사망)</span></div></div>
                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 김태영</span></div></li>
                                                                 <li><div class="person female"><span class="name">35세 김지연 (여)</span></div></li>
@@ -194,46 +190,44 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <!-- 33세 -->
-                                                <li><div class="person deceased"><span class="name">33세 순복 (純福)</span><div class="details"><span>생: 1928.10.15 ~ 졸: 2024.10.05</span><span class="spouse">배: 창녕 성은순 (1931.07.27 ~ 2016.01.26)</span><span>묘: 연기 안송적골 106 / 33세 순복 가족묘원</span></div></div>
+                                                <li><div class="person deceased"><span class="name">33세 순복</span><div class="details"><span>생: 1928.10.15 ~ 졸: 2024.10.05</span><span class="spouse">배: 창녕 성은순 (생: 1931.07.27, 졸: 2016.01.26)</span><span>묘: 연기 안송적골 106 / 33세 순복 가족묘원</span></div></div>
                                                     <ul>
-                                                        <li><div class="person"><span class="name">34세 양표 (亮杓)</span><div class="details"><span>생: 1951.09.28, 호원대 졸</span><span class="spouse">배: 남원 양금순 (생: 1958.03.06)</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 양표</span><div class="details"><span>생: 1951.09.28, 호원대학교 졸</span><span class="spouse">배: 남원 양금순 (생: 1958.03.06)</span></div></div>
                                                             <ul>
-                                                                <li><div class="person"><span class="name">35세 창환 (昌煥)</span><div class="details"><span>생: 1980.02.25, 공주영상정보대 졸</span></div></div></li>
+                                                                <li><div class="person"><span class="name">35세 창환</span><div class="details"><span>생: 1980.02.25, 공주영상정보대 졸</span></div></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 두표 (斗杓)</span><div class="details"><span>생: 1957.02.10</span><span class="spouse">배: 전주 이효순 (생: 1959.09.09)</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 두표</span><div class="details"><span>생: 1957.02.10</span><span class="spouse">배: 전주 이효순 (생: 1959.09.09)</span></div></div>
                                                             <ul>
-                                                                <li><div class="person female"><span class="name">35세 성혜 (性惠) (여)</span><div class="details"><span>생: 1989.08.03, 한국관광대</span></div></div></li>
-                                                                <li><div class="person"><span class="name">35세 성일 (性一)</span><div class="details"><span>생: 1997.01.22, 성결대 졸</span></div></div></li>
+                                                                <li><div class="person"><span class="name">35세 성일</span><div class="details"><span>생: 1997.01.22, 성결대 졸</span></div></div></li>
+                                                                <li><div class="person female"><span class="name">35세 성혜 (여)</span><div class="details"><span>생: 1989.08.03, 한국관광대</span></div></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person female"><span class="name">34세 선자 (仙子) (여)</span><div class="details"><span>생: 1962.08.08</span><span class="spouse">부: 송인철</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 란표</span><div class="details"><span>생: 1965.10.11</span><span class="spouse">배: 남평 문경희 (생: 1965.08.28)</span></div></div>
+                                                            <ul>
+                                                                <li><div class="person"><span class="name">35세 지아</span><div class="details"><span>생: 1991.12.11, 남호주대 졸</span></div></div></li>
+                                                                <li><div class="person female"><span class="name">35세 우진 (여)</span><div class="details"><span>생: 1996.01.20, 썬웨이대 졸</span></div></div></li>
+                                                            </ul>
+                                                        </li>
+                                                         <li><div class="person female"><span class="name">34세 선자 (여)</span><div class="details"><span>생: 1962.08.08</span><span class="spouse">부: 송인철</span></div></div>
                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 송창현</span><div class="details"><span>생: 1988.11.28</span></div></div></li>
                                                                 <li><div class="person"><span class="name">35세 송혁</span><div class="details"><span>생: 1991.01.21</span></div></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 란표 (蘭杓)</span><div class="details"><span>생: 1965.10.11</span><span class="spouse">배: 남평 문경희 (생: 1965.08.28)</span></div></div>
-                                                            <ul>
-                                                                <li><div class="person"><span class="name">35세 지아</span><div class="details"><span>생: 1991.12.11, 남호주대 졸</span></div></div></li>
-                                                                <li><div class="person female"><span class="name">35세 우진 (宇珍) (여)</span><div class="details"><span>생: 1996.01.20, 썬웨이대 졸</span></div></div></li>
-                                                            </ul>
-                                                        </li>
                                                     </ul>
                                                 </li>
-                                                <!-- 33세 -->
-                                                <li><div class="person deceased"><span class="name">33세 순덕 (純德)</span><div class="details"><span>생: 1930.08.15 ~ 졸: 2013.02.03</span><span class="spouse">배: 선영 남순덕 (1931.09.24 ~ 2016.12.04)</span><span>묘: 연기 안송적골 106 / 33세 순덕 가족묘원</span></div></div>
-                                                    <ul>
-                                                        <li><div class="person"><span class="name">34세 한표 (漢杓)</span><div class="details"><span>생: 1949.09.24</span><span class="spouse">배: 경주 이해옥 (생: 1955.10.15)</span></div></div>
+                                                <li><div class="person deceased"><span class="name">33세 순덕</span><div class="details"><span>생: 1930.08.15 ~ 졸: 2013.02.03</span><span class="spouse">배: 선영 남순덕 (생: 1931.09.24, 졸: 2016.12.04)</span><span>묘: 연기 안송적골 106 / 33세 순덕 가족묘원</span></div></div>
+                                                     <ul>
+                                                        <li><div class="person"><span class="name">34세 한표</span><div class="details"><span>생: 1949.09.24</span><span class="spouse">배: 경주 이해옥 (생: 1955.10.15)</span></div></div>
                                                             <ul>
-                                                                <li><div class="person"><span class="name">35세 원희 (源喜)</span><div class="details"><span>생: 1977.09.23, 충남대 졸</span><span class="spouse">배: 전주 이희숙 (생: 1978.08.18)</span></div></div>
+                                                                <li><div class="person"><span class="name">35세 원희</span><div class="details"><span>생: 1977.09.23, 충남대 졸</span><span class="spouse">배: 전주 이희숙 (생: 1978.08.18)</span></div></div>
                                                                     <ul>
-                                                                        <li><div class="person"><span class="name">36세 은석 (銀錫)</span><div class="details"><span>생: 2008.01.30</span></div></div></li>
-                                                                        <li><div class="person"><span class="name">36세 선우 (宣佑)</span><div class="details"><span>생: 2010.04.23</span></div></div></li>
+                                                                        <li><div class="person"><span class="name">36세 은석</span><div class="details"><span>생: 2008.01.30</span></div></div></li>
+                                                                        <li><div class="person"><span class="name">36세 선우</span><div class="details"><span>생: 2010.04.23</span></div></div></li>
                                                                     </ul>
                                                                 </li>
-                                                                <li><div class="person"><span class="name">35세 재하 (載河, 원성)</span><div class="details"><span>생: 1979.12.29, 충남대 졸</span><span class="spouse">배: 정보 없음</span></div></div>
+                                                                <li><div class="person"><span class="name">35세 재하(원성)</span><div class="details"><span>생: 1979.12.29, 충남대 졸</span><span class="spouse">배: </span></div></div>
                                                                     <ul>
                                                                         <li><div class="person"><span class="name">36세 우준</span><div class="details"><span>생: 04.03</span></div></div></li>
                                                                         <li><div class="person"><span class="name">36세 대훈</span><div class="details"><span>생: 04.03</span></div></div></li>
@@ -243,63 +237,61 @@
                                                                 </li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 영표 (永杓)</span><div class="details"><span>생: 1954.01.13</span><span class="spouse">배: 청주 고중임 (생: 1953.09.09)</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 영표</span><div class="details"><span>생: 1954.01.13</span><span class="spouse">배: 청주 고중임 (생: 1953.09.09)</span></div></div>
                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 동현</span></div></li>
                                                                 <li><div class="person"><span class="name">35세 동철</span></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 광표 (光杓)</span><div class="details"><span>생: 1957.08.28</span><span class="spouse">배: 강순화 (생: 1958.04.03)</span></div></div>
-                                                            <ul>
+                                                        <li><div class="person"><span class="name">34세 광표</span><div class="details"><span>생: 1957.08.28</span><span class="spouse">배: 강순화 (생: 1958.04.03)</span></div></div>
+                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 창룡</span></div></li>
                                                                 <li><div class="person"><span class="name">35세 창식</span></div></li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person female"><span class="name">34세 길표 (吉杓)</span><div class="details"><span>생: 1962.11.03</span><span class="spouse">배: 진주 강경숙 (생: 1964.02.20)</span></div></div>
-                                                            <ul>
-                                                                <li><div class="person female"><span class="name">35세 성옥 (여)</span><div class="details"><span>생: 1984.05.25</span></div></div></li>
-                                                                <li><div class="person"><span class="name">35세 승완</span><div class="details"><span>생: 1987.04.13</span></div></div></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><div class="person"><span class="name">34세 대표 (大杓)</span><div class="details"><span>생: 1962.06.05</span><span class="spouse">배: 김순화 (생: 1960.12.17)</span></div></div>
-                                                            <ul>
+                                                        <li><div class="person"><span class="name">34세 대표</span><div class="details"><span>생: 1962.06.05</span><span class="spouse">배: 김순화 (생: 1960.12.17)</span></div></div>
+                                                             <ul>
                                                                 <li><div class="person"><span class="name">35세 태일</span></div></li>
                                                                 <li><div class="person"><span class="name">35세 태원</span></div></li>
                                                             </ul>
                                                         </li>
+                                                        <li><div class="person"><span class="name">34세 길표</span><div class="details"><span>생: 1962.11.03</span><span class="spouse">배: 진주 강경숙 (생: 1964.02.20)</span></div></div>
+                                                            <ul>
+                                                                <li><div class="person"><span class="name">35세 승완</span><div class="details"><span>생: 1987.04.13</span></div></div></li>
+                                                                <li><div class="person female"><span class="name">35세 성옥 (여)</span><div class="details"><span>생: 1984.05.25</span></div></div></li>
+                                                            </ul>
+                                                        </li>
                                                     </ul>
                                                 </li>
-                                                <!-- 33세 -->
-                                                <li><div class="person deceased"><span class="name">33세 순의 (純義)</span><div class="details"><span>6.25때 행방불명</span></div></div></li>
-                                                <!-- 33세 -->
-                                                <li><div class="person deceased"><span class="name">33세 순중 (純重)</span><div class="details"><span>생: 1936.03.22 ~ 졸: 1974.12.25</span><span class="spouse">배: 전주 이건숙 (생: 1931.09.29)</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span></div></div>
+                                                <li><div class="person deceased"><span class="name">33세 순의</span><div class="details"><span>6.25때 행방불명</span></div></div></li>
+                                                <li><div class="person"><span class="name">33세 순중</span><div class="details"><span>생: 1936.03.22 ~ 졸: 1974.12.25</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span><span class="spouse">배: 전주 이건숙 (생: 1931.09.29)</span></div></div>
                                                     <ul>
-                                                        <li><div class="person"><span class="name">34세 표</span><div class="details"><span>생: 1957.03.20</span><span class="spouse">배: 전주 이명규 (1958.06.20 ~ 사망)</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 표</span><div class="details"><span>생: 1957.03.20</span><span class="spouse">배: 전주 이명규 (생: 1958.06.20, 사망)</span><span>묘: 연기 안송적골 106 / 33세 순중 가족묘원</span></div></div>
                                                             <ul>
+                                                                <li><div class="person"><span class="name">35세 홍진</span><div class="details"><span>생: 1984.06.10</span><span class="spouse">배: 김해 김초롱 (생: 1987.01.04)</span></div></div>
+                                                                    <ul>
+                                                                        <li><div class="person"><span class="name">36세 지오</span><div class="details"><span>생: 2016.01.08</span></div></div></li>
+                                                                    </ul>
+                                                                </li>
                                                                 <li><div class="person female"><span class="name">35세 효진 (여)</span><div class="details"><span>생: 1982.01.22</span><span class="spouse">부: 반남 박지우 (생: 1980.11.12)</span></div></div>
                                                                     <ul>
                                                                         <li><div class="person"><span class="name">36세 박준영</span><div class="details"><span>생: 2010.01.17</span></div></div></li>
                                                                         <li><div class="person"><span class="name">36세 박준혁</span><div class="details"><span>생: 2012.07.02</span></div></div></li>
                                                                     </ul>
                                                                 </li>
-                                                                <li><div class="person"><span class="name">35세 홍진</span><div class="details"><span>생: 1984.06.10</span><span class="spouse">배: 김해 김초롱 (생: 1987.01.04)</span></div></div>
-                                                                    <ul>
-                                                                        <li><div class="person"><span class="name">36세 지오</span><div class="details"><span>생: 2016.01.08</span></div></div></li>
-                                                                    </ul>
-                                                                </li>
                                                             </ul>
                                                         </li>
-                                                        <li><div class="person"><span class="name">34세 지표 (地杓)</span><div class="details"><span>생: 1960.06.15</span><span class="spouse">배: 평산 신성옥 (생: 1966.07.03)</span></div></div>
+                                                        <li><div class="person"><span class="name">34세 지표</span><div class="details"><span>생: 1960.06.15</span><span class="spouse">배: 평산 신성옥 (생: 1966.07.03)</span></div></div>
                                                             <ul>
-                                                                <li><div class="person female"><span class="name">35세 수정 (여)</span><div class="details"><span>생: 1988.11.25, 단국대 졸</span><span class="spouse">부: 덕수 이재명 (생: 1985.01.19, 단국대 졸)</span></div></div>
-                                                                    <ul>
-                                                                        <li><div class="person female"><span class="name">36세 이윤하 (여)</span><div class="details"><span>생: 2021.10.07</span></div></div></li>
-                                                                    </ul>
-                                                                </li>
                                                                 <li><div class="person"><span class="name">35세 성진</span><div class="details"><span>생: 1990.07.25</span><span class="spouse">배: 밀양 박인희 (생: 1989.11.06)</span></div></div>
                                                                     <ul>
                                                                         <li><div class="person"><span class="name">36세 현서</span><div class="details"><span>생: 2018.05.16</span></div></div></li>
                                                                         <li><div class="person female"><span class="name">36세 승아 (여)</span><div class="details"><span>생: 2021.04.06</span></div></div></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li><div class="person female"><span class="name">35세 수정 (여)</span><div class="details"><span>생: 1988.11.25, 단국대학교 졸</span><span class="spouse">부: 덕수 이재명 (생: 1985.01.19, 단국대 졸)</span></div></div>
+                                                                    <ul>
+                                                                        <li><div class="person female"><span class="name">36세 이윤하 (여)</span><div class="details"><span>생: 2021.10.07</span></div></div></li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
@@ -318,16 +310,14 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <!-- 33세 -->
-                                                <li><div class="person"><span class="name">33세 순기 (純基)</span><div class="details"><span>생: 1941.01.18, 한양공대 졸</span><span class="spouse">배: 광산 김명희 (생: 1946.10.20)</span></div></div>
+                                                <li><div class="person"><span class="name">33세 순기</span><div class="details"><span>생: 1941.01.18, 한양공대 졸</span><span class="spouse">배: 광산 김명희 (생: 1946.10.20)</span></div></div>
                                                     <ul>
-                                                        <li><div class="person"><span class="name">34세 승표 (承杓)</span><div class="details"><span>생: 1972.11.01, 청주대 졸</span></div></div></li>
+                                                        <li><div class="person"><span class="name">34세 승표</span><div class="details"><span>생: 1972.11.01, 청주대 졸</span></div></div></li>
                                                         <li><div class="person female"><span class="name">34세 은경 (여)</span><div class="details"><span>생: 1975.08.27, 인하대 졸</span></div></div></li>
                                                         <li><div class="person female"><span class="name">34세 은주 (여)</span><div class="details"><span>생: 1977.10.06, 인하대 졸</span></div></div></li>
                                                     </ul>
                                                 </li>
-                                                <!-- 33세 -->
-                                                <li><div class="person female"><span class="name">33세 옥순 (玉順) (여)</span><div class="details"><span class="spouse">부: 전주 이무성 (사망)</span></div></div>
+                                                <li><div class="person female"><span class="name">33세 옥순 (여)</span><div class="details"><span class="spouse">부: 전주 이무성 (사망)</span></div></div>
                                                     <ul>
                                                         <li><div class="person"><span class="name">34세 이은관</span><div class="details"><span>연세대 졸</span></div></div></li>
                                                         <li><div class="person"><span class="name">34세 이은호</span><div class="details"><span>충남대 졸</span></div></div></li>
